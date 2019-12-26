@@ -1,3 +1,30 @@
+<?php require("../includes/connection.php");?>
+
+<?php
+	$sql = "SELECT taikhoan.maTK, taikhoan.tenTK, taikhoan.matKhau, giangvien.hoTenGV, giangvien.maGV 
+    FROM taikhoan ,giangvien
+    where taikhoan.maTK = giangvien.maTK" ;
+
+	$query = mysqli_query($conn,$sql);
+    
+	
+	
+?>
+
+<?php
+	if (isset($_GET["id_delete"])) {
+        $sql = 'DELETE FROM giangvien WHERE maTK ="' .$_GET["id_delete"].'"';
+		mysqli_query($conn,$sql);
+		$sql = 'DELETE FROM taikhoan WHERE maTK ="' .$_GET["id_delete"].'"';
+		mysqli_query($conn,$sql);
+		
+		
+	}
+	
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,6 +57,40 @@
             
             <div class="main-right">
                 <h5>Danh sách giảng viên</h5>
+                <div>
+                    <table class="table">
+                        <thead class="thead-light">
+                            <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Tên giảng viên</th>
+                            <th scope="col">Tài khoản</th>
+                            <th scope="col">Mật khẩu</th>
+                            
+                            <th scope="col">Sửa</th>
+                            <th scope="col">Xóa</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php 
+                                while ( $data = mysqli_fetch_array($query)) {
+                                
+                                    $ID = $data['maTK'];
+                            ?>
+                            <tr>
+                            <td scope="row"><?php echo $data['maTK']; ?></td>
+                            <td><?php echo $data['hoTenGV']; ?></td>
+                            <td><?php echo $data['tenTK']; ?></td>
+                            
+                            <td><?php echo md5($data['matKhau']); ?></td>
+                            
+                            <td><a href="">Sửa</a></td>
+                            <td><a href="TTQL.php?id_delete=<?php echo $ID;?>">Xóa</a></td>
+
+                            </tr>
+                            <?php } ?>
+                        </tbody>
+			        </table>
+                    </div>
             </div>
         </div>   
     </main>

@@ -1,3 +1,17 @@
+
+<?php require("../includes/connection.php");?>
+
+<?php
+	$sql = "SELECT maKHGD, baiHocDK, diaDiemDK ,thoiGianDK
+    FROM kehoachgiangday";
+  //  where kehoachgianday.maGV = maGV" ;
+
+	$query = mysqli_query($conn,$sql);
+    
+//	
+	
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -35,7 +49,40 @@
         </div>
     </nav>
     <main>
-            
+    <div class="wrapper">               
+                <div class="main-right">
+                    <h5>Kế hoạch giảng dạy</h5>
+                    <div>
+                    <table class="table">
+                        <thead class="thead-light">
+                            <tr>
+                            <th scope="col">Mã giảng dạy</th>
+                            <th scope="col">Bài học dự kiến</th>
+                            <th scope="col">Địa điểm dự kiến</th>
+                            <th scope="col">Thời gian dự kiến</th>
+                            
+                            
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php 
+                                while ( $data = mysqli_fetch_array($query)) {
+                                
+                                    $ID = $data['maTK'];
+                            ?>
+                            <tr>
+                            <td scope="row"><?php echo $data['maKHGD']; ?></td>
+                            <td><?php echo $data['baiHocDK']; ?></td>
+                            <td><?php echo $data['diaDiemDK']; ?></td>                          
+                            <td><?php echo md5($data['thoiGianDK']); ?></td>
+      
+                            </tr>
+                            <?php } ?>
+                        </tbody>
+			        </table>
+                    </div>                   
+                </div>
+            </div>
     </main>
     <footer>
         <div class="wrapper">

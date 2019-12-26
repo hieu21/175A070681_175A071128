@@ -1,24 +1,27 @@
 <?php require("../includes/connection.php");?>
 
 <?php
-	$sql = "SELECT maTK, tenTK, matKhau, hoTenQL, maQL 
-	        FROM taikhoan
-	        INNER JOIN quanly
-	        where taikhoan.maTK = quanly.maQL" ;
+	$sql = "SELECT taikhoan.maTK, taikhoan.tenTK, taikhoan.matKhau, quanly.hoTenQL, quanly.maQL 
+    FROM taikhoan ,quanly
+    where taikhoan.maTK = quanly.maTK" ;
 
 	$query = mysqli_query($conn,$sql);
+    
+	
+	
 ?>
+
 <?php
 	if (isset($_GET["id_delete"])) {
-		$sql = "DELETE FROM taikhoan WHERE maTK = ".$_GET["id_delete"];
+        $sql = 'DELETE FROM quanly WHERE maTK ="' .$_GET["id_delete"].'"';
 		mysqli_query($conn,$sql);
-		$sql = "DELETE FROM quanly WHERE maQL = ".$_GET["id_delete"];
+		$sql = 'DELETE FROM taikhoan WHERE maTK ="' .$_GET["id_delete"].'"';
 		mysqli_query($conn,$sql);
+		
 		
 	}
 	
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -50,40 +53,40 @@
                 <div class="main-right">
                     <h5>Danh sách quản lý</h5>
                     <div>
-                        <table class="table">
-                            <thead class="thead-light">
-                                <tr>
-                                <th scope="col">Mã TK</th>
-                                <th scope="col">Tên quản lý</th>
-                                <th scope="col">Tài khoản</th>
-                                <th scope="col">Mật khẩu</th>
-                                <th scope="col">Sửa</th>
-                                <th scope="col">Xóa</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php 
-                                    while ( $data = mysqli_fetch_array($query)) {
-                                    
-                                        $maTK = $data['maTK'];
-                                    }
-                                ?>
-                                <tr>
-                                <th scope="row"><?php echo $data['maTK']; ?></th>
-                                <td><?php echo $data['hoTenQL']; ?></td>
-                                <td><?php echo $data['tenTK']; ?></td>                        
-                                <td><?php echo md5($data['matKhau']); ?></td>
-                                <td><a href="">Sửa</a></td>
-                                <td><a href="info_lecturers.php?id_delete=<?php echo $maTK;?>">Xóa</a></td>
-
-                                </tr>
+                    <table class="table">
+                        <thead class="thead-light">
+                            <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Tên quản lý</th>
+                            <th scope="col">Tài khoản</th>
+                            <th scope="col">Mật khẩu</th>
+                            
+                            <th scope="col">Sửa</th>
+                            <th scope="col">Xóa</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php 
+                                while ( $data = mysqli_fetch_array($query)) {
                                 
-                            </tbody>
-                        </table>
+                                    $ID = $data['maTK'];
+                            ?>
+                            <tr>
+                            <td scope="row"><?php echo $data['maTK']; ?></td>
+                            <td><?php echo $data['hoTenQL']; ?></td>
+                            <td><?php echo $data['tenTK']; ?></td>
+                            
+                            <td><?php echo md5($data['matKhau']); ?></td>
+                            
+                            <td><a href="">Sửa</a></td>
+                            <td><a href="TTQL.php?id_delete=<?php echo $ID;?>">Xóa</a></td>
+
+                            </tr>
+                            <?php } ?>
+                        </tbody>
+			        </table>
                     </div>                   
                 </div>
-                
-                
             </div>
     </main>
     <footer>
