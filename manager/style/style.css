@@ -7,6 +7,10 @@ header{
 main{
     margin-top: 20px;
 }
+footer{
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
 nav{
     margin-top: 20px;
 }
@@ -24,10 +28,10 @@ nav{
 .header-left{
     padding: 10px;
 }
-table, th, td {
+/* table, th, td {
     margin-top: 10px;
     margin-left: 200px;
-  }
+  } */
 #address{
     text-align: center;
     margin: auto;
@@ -38,4 +42,30 @@ table, th, td {
     margin-bottom: 10px;
     color: #007bff;
     font-weight: bold;
+}
+.main-left{
+    width: 250px;
+    padding: 10px;
+    line-height: 1.6;
+}
+.main-right{
+    width: 100%;
+}
+.main-right h5 {
+    text-align: center;
+}
+.main{
+    margin: 35px auto;
+    width: 800px;
+}
+table tr td{
+    box-sizing: border-box;
+}
+.login{
+    width: 400px;
+    margin: 100px auto;
+
+}
+.card-block {
+    margin: 0 auto;
 }
