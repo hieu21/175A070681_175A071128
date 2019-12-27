@@ -44,7 +44,7 @@ nav{
     font-weight: bold;
 }
 .main-left{
-    width: 250px;
+    /* width: 250px; */
     padding: 10px;
     line-height: 1.6;
 }

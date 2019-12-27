@@ -25,7 +25,36 @@
         </div>
     </nav>
     <main>
+    <div class="wrapper" style="display: block">
+            <div class="main">
+            <form>
             
+            <div class="form-group">
+                <label for="exampleInputPassword1">Thông tin giảng viên</label>
+                <input type="text" class="form-control" id="exampleInputPassword1">
+            </div>
+            
+            <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+            </div>
+                <div>
+                <table class="table">
+                        <thead class="thead-light">
+                            <tr>
+                            <th scope="col">Mã giảng viên</th>
+                            <th scope="col">Tên giảng viên</th>
+                            <th scope="col">Ngày sinh </th>
+                            <th scope="col">Ngành</th>
+                            <th scope="col">Xem lịch</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            
+                        </tbody>
+			        </table>
+                </div>
+
+            </div>
     </main>
     <footer>
         <div class="wrapper">

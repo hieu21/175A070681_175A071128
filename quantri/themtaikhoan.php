@@ -8,31 +8,37 @@
 		//lấy thông tin từ các form bằng phương thức POST
 		$Mataikhoan = $_POST["Mataikhoan"];
         $Tentaikhoan = $_POST["Tentaikhoan"];
-        $Matkhau = $_POST["Matkhau"];
+        // $Matkhau = $_POST["Matkhau"];
 		$Hoten = $_POST["Hoten"];
         $Ngaysinh = $_POST["Ngaysinh"];
         $Diachi = $_POST["Diachi"];
         $Capdo = $_POST["Capdo"];
 		//Kiểm tra điều kiện bắt buộc đối với các field không được bỏ trống
-		if ($Mataikhoan == "" || $Tentaikhoan == "" || $Matkhau == "" || $Hoten == "" || $Ngaysinh == "" || $Diachi == "" || $Capdo == "") {
+		if ($Mataikhoan == "" || $Tentaikhoan == "" || $Hoten == "" || $Ngaysinh == "" || $Diachi == "" || $Capdo == "") {
 			$message = '<label class="text-success">Bạn vui lọng nhập đầy đủ thông tin</label>';
 		}else{
             //thực hiện việc lưu trữ dữ liệu vào db
-                $sql = "INSERT INTO taikhoan(maTK, tenTK, matKhau, capDo, ngayTao ) VALUES ( '$Mataikhoan', '$Tentaikhoan', '$Matkhau', '$Capdo', now())";
+                $sql = "INSERT INTO taikhoan(maTK, tenTK, matKhau, capDo, ngayTao ) VALUES ( '$Mataikhoan', '$Tentaikhoan', '$Ngaysinh', '$Capdo', now())";
                 mysqli_query($conn,$sql);
             if($_POST['Capdo'] =="2"){
 
                 $sql1 = "INSERT INTO quanly(maQL, hoTenQL, ngaySinh, diaChi, maTK ) VALUES ( '$Mataikhoan', '$Hoten', '$Ngaysinh', '$Diachi', '$Mataikhoan')";
                 mysqli_query($conn,$sql1);
-                echo "bạn đã đăng ký thành công";
-                //$message = '<label class="text-success">bạn đã thành công</label>';
+                //echo "bạn đã đăng ký thành công";
+                echo '<script language="javascript">';
+                echo 'alert("BẠN ĐÃ THÀNH CÔNG")';
+                echo '</script>';
+                //$message = "<label class='text-success'>bạn đã thành công</label>";
 
             }
             else if($_POST['Capdo'] =="1"){
                 $sql2 = "INSERT INTO giangvien(maGV, hoTenGV, ngaySinh, diaChi, maTK ) VALUES ( '$Mataikhoan', '$Hoten', '$Ngaysinh', '$Diachi', '$Mataikhoan')";
                 mysqli_query($conn,$sql2);
-                echo "bạn đã đăng ký thành công";
-               // $message = '<label class="text-success">bạn đã thành công</label>';
+               // echo "bạn đã đăng ký thành công";
+                echo '<script language="javascript">';
+                echo 'alert("BẠN ĐÃ THÀNH CÔNG")';
+                echo '</script>';
+                //$message = "<label class='text-success'>bạn đã thành công</label>";
 
 
             }
@@ -77,26 +83,28 @@
                         <input type="text" class="form-control" id="Mataikhoan" name="Mataikhoan" >
                     </div>
                     <div class="form-group">
-                        <label>Tên tài khoản</label>
+                        <label>Tên tài khoản: Mã ngành + NS:năm/tháng/ngày + Tên không dấu VD:N0119990921hieu</label>
                         <input type="text" class="form-control" id="Tentaikhoan" name="Tentaikhoan" >
                     </div>
-                    <div class="form-group">
+                    <!-- <div class="form-group">
                         <label>Mật khẩu</label>
                         <input type="text" class="form-control" id="Matkhau" name="Matkhau" >
+                    </div> -->
+                    <div class="form-group">
+                        <label>Ngày sinh (vừa là mật khẩu)</label>
+                        <input type="date" class="form-control" id="Ngaysinh" name="Ngaysinh" >
                     </div>
                     <div class="form-group">
                         <label>Họ tên</label>
                         <input type="text" class="form-control" id="Hoten" name="Hoten" >
                     </div>
-                    <div class="form-group">
-                        <label>Ngày sinh</label>
-                        <input type="date" class="form-control" id="Ngaysinh" name="Ngaysinh" >
-                    </div>
+                    
                     <div class="form-group">
                         <label>Địa chỉ</label>
                         <input type="text" class="form-control" id="Diachi" name="Diachi" >
                     </div>
-                    <select name="Capdo" class="form-control" class="form-group" style="margin-top: 30px;" >
+                    <label>Chức vụ:</label>
+                    <select name="Capdo" class="form-control" class="form-group"  >
 		                <option></option>
 		                <option value="2">Quản lý</option>
 		                <option value="1">Giảng viên</option>

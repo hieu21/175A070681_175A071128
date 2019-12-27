@@ -30,7 +30,7 @@ session_start();
                 if($data["capDo"]==3)
                 header('Location: quantri/themtaikhoan.php');
                 else if($data["capDo"]==1)
-                header('Location: giaovien/KehoachgiangdayGV.php');
+                header('Location: giangvien/KehoachgiangdayGV.php');
                 else if($data["capDo"]==2)
                 header('Location: manager/manager.php');
                 else
