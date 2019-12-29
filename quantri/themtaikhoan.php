@@ -13,6 +13,7 @@
         $Ngaysinh = $_POST["Ngaysinh"];
         $Diachi = $_POST["Diachi"];
         $Capdo = $_POST["Capdo"];
+        
 		//Kiểm tra điều kiện bắt buộc đối với các field không được bỏ trống
 		if ($Mataikhoan == "" || $Tentaikhoan == "" || $Hoten == "" || $Ngaysinh == "" || $Diachi == "" || $Capdo == "") {
 			$message = '<label class="text-success">Bạn vui lọng nhập đầy đủ thông tin</label>';

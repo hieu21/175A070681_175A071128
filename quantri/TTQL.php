@@ -1,7 +1,7 @@
 <?php require("../includes/connection.php");?>
 
 <?php
-	$sql = "SELECT taikhoan.maTK, taikhoan.tenTK, taikhoan.matKhau, quanly.hoTenQL, quanly.maQL 
+	$sql = "SELECT taikhoan.maTK, taikhoan.tenTK, taikhoan.matKhau, quanly.hoTenQL, quanly.maQL, quanly.ngaySinh, quanly.diaChi
     FROM taikhoan ,quanly
     where taikhoan.maTK = quanly.maTK" ;
 
@@ -56,11 +56,11 @@
                     <table class="table">
                         <thead class="thead-light">
                             <tr>
-                            <th scope="col">ID</th>
+                            <th scope="col">Mã TK</th>
                             <th scope="col">Tên quản lý</th>
                             <th scope="col">Tài khoản</th>
-                            <th scope="col">Mật khẩu</th>
-                            
+                            <th scope="col">Ngày sinh</th>
+                            <th scope="col">Địa chỉ</th>
                             <th scope="col">Sửa</th>
                             <th scope="col">Xóa</th>
                             </tr>
@@ -76,9 +76,10 @@
                             <td><?php echo $data['hoTenQL']; ?></td>
                             <td><?php echo $data['tenTK']; ?></td>
                             
-                            <td><?php echo md5($data['matKhau']); ?></td>
+                            <td><?php echo $data['ngaySinh']; ?></td>
+                            <td><?php echo $data['diaChi']; ?></td>
                             
-                            <td><a href="">Sửa</a></td>
+                            <td><a href="suaTTQL.php?id=<?php echo $maTK;?>">Sửa</a></td>
                             <td><a href="TTQL.php?id_delete=<?php echo $ID;?>">Xóa</a></td>
 
                             </tr>

@@ -3,7 +3,7 @@
 session_start();
 ?>
 <?php
-    require("includes/connection.php");
+    require("../includes/connection.php");
     if (isset($_POST["btn_submit"])) {
 		// lấy thông tin người dùng
 	$username = $_POST["username"];
@@ -13,17 +13,16 @@ session_start();
 	$username = strip_tags($username);
 	$username = addslashes($username);
 	$password = strip_tags($password);
-    $password = addslashes($password);
-    // $password1 = md5($password);
+	$password = addslashes($password);
 	if ($username == "" || $password =="") {
-		echo "<script>alert('Tài khoản và mật khẩu không được để trống');</script>";
+		echo "username hoặc password bạn không được để trống!";
 	}else{
 		$sql = "select * from taikhoan where tenTK = '$username' and matKhau = '$password' ";
 		$query = mysqli_query($conn,$sql);
         $num_rows = mysqli_num_rows($query);
         $data = mysqli_fetch_array($query);
 		if ($num_rows==0) {
-			echo "<script>alert('Tên đăng nhập hoặc mật khẩu sai');</script>";
+			echo "tên đăng nhập hoặc mật khẩu không đúng !";
 		}else{
                 $_SESSION['maTK'] = $data["maTK"];
                 $_SESSION['tenTK'] = $data["tenTK"];
@@ -31,16 +30,12 @@ session_start();
                 if($data["capDo"]==3)
                 header('Location: quantri/themtaikhoan.php');
                 else if($data["capDo"]==1)
-                header('Location: giangvien/KehoachgiangdayGV.php');
+                header('Location: giaovien/KehoachgiangdayGV.php');
                 else if($data["capDo"]==2)
-                header('Location: quanly/quanly.php');
+                header('Location: manager.php');
                 else
                 header('Location: tintuc.php');
 	    	}
-			
-                // Thực thi hành động sau khi lưu thông tin vào session
-                // ở đây mình tiến hành chuyển hướng trang web tới một trang gọi là index.php
-			    //header('Location: index.php');
 		}
 	}
 
@@ -54,8 +49,8 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Đăng nhập</title>
-    <link rel="stylesheet" href="style/css/bootstrap.min.css">
-    <link rel="stylesheet" href="style/css/style.css">
+    <link rel="stylesheet" href="style/bootstrap.min.css">
+    <link rel="stylesheet" href="style/style.css">
 </head>
 <body>
     <header>
@@ -79,11 +74,11 @@ session_start();
                     <form method="POST" action="dangnhap.php">
                         <table>
                             <tr>
-                                <td>Tài khoản</td>
+                                <td>Username</td>
                                 <td><input type="text" name="username" size="30"></td>
                             </tr>
                             <tr>
-                                <td>Mật khẩu</td>
+                                <td>Password</td>
                                 <td><input type="password" name="password" size="30"></td>
                             </tr>
                             <tr>

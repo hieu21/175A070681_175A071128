@@ -1,3 +1,19 @@
+
+<?php require("../includes/connection.php");?>
+
+<?php
+	$sql = "SELECT maKHGD, baiHocDK, diaDiemDK ,thoiGianDK
+    FROM kehoachgiangday";
+  //  where kehoachgianday.maGV = maGV" ;
+
+	$query = mysqli_query($conn,$sql);
+    
+//	
+	
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,42 +27,29 @@
 <body>
     <header>
         <div class="wrapper">
+            <?php
+                include("headergv.php");
+            ?>
             
-            <div class="header-left">
-                <a href="#"><img src="../style/images/logo.png" alt="logo"></a>
-            </div>
             
         </div>
     </header>
     <nav>
         <div class="wrapper">
-            <ul class="nav nav-tabs ">
-                <li class="nav-item">
-                    <a class="nav-link" href="KehoachgiangdayGV.php">Kế hoạch giảng dạy</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="LichtrinhgiangdayGV.php">Lịch Trình Giảng Dạy</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="../tintuc.php">Đăng xuất</a>
-                </li>
-                
-            </ul>
+            <?php
+                include("navGV.php");
+            ?>
         </div>
     </nav>
     <main>
-            
+    <div class="wrapper">               
+
     </main>
     <footer>
         <div class="wrapper">
-            <div id="address">
-                <div class="name">
-                    TRƯỜNG ĐẠI HỌC THỦY LỢI 
-                </div>
-                Địa chỉ : 175 TÂY SƠN, ĐỐNG ĐA, HÀ NỘI. <br>
-                Điện thoại: (024) 3852 2201 - Fax: (024) 3563 3351
-                Email: <a href="#">phonghcth@tlu.edu.vn</a>
-            </div>
+            <?php
+                include("../footer.php");
+            ?>  
         </div>
     </footer>
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>

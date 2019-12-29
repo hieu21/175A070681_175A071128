@@ -1,7 +1,7 @@
 <?php require("../includes/connection.php");?>
 
 <?php
-	$sql = "SELECT taikhoan.maTK, taikhoan.tenTK, taikhoan.matKhau, giangvien.hoTenGV, giangvien.maGV 
+	$sql = "SELECT taikhoan.maTK, taikhoan.tenTK, taikhoan.matKhau, giangvien.hoTenGV, giangvien.maGV, giangvien.ngaySinh, giangvien.diaChi 
     FROM taikhoan ,giangvien
     where taikhoan.maTK = giangvien.maTK" ;
 
@@ -61,11 +61,11 @@
                     <table class="table">
                         <thead class="thead-light">
                             <tr>
-                            <th scope="col">ID</th>
+                            <th scope="col">Mã TK</th>
                             <th scope="col">Tên giảng viên</th>
                             <th scope="col">Tài khoản</th>
-                            <th scope="col">Mật khẩu</th>
-                            
+                            <th scope="col">Ngày sinh</th>
+                            <th scope="col">Địa chỉ</th>
                             <th scope="col">Sửa</th>
                             <th scope="col">Xóa</th>
                             </tr>
@@ -74,17 +74,17 @@
                             <?php 
                                 while ( $data = mysqli_fetch_array($query)) {
                                 
-                                    $ID = $data['maTK'];
+                                    $maTK = $data['maTK'];
                             ?>
                             <tr>
                             <td scope="row"><?php echo $data['maTK']; ?></td>
                             <td><?php echo $data['hoTenGV']; ?></td>
                             <td><?php echo $data['tenTK']; ?></td>
                             
-                            <td><?php echo md5($data['matKhau']); ?></td>
-                            
-                            <td><a href="">Sửa</a></td>
-                            <td><a href="TTQL.php?id_delete=<?php echo $ID;?>">Xóa</a></td>
+                            <td><?php echo $data['ngaySinh']; ?></td>
+                            <td><?php echo $data['diaChi']; ?></td>
+                            <td><a href="suaTTGV.php?id=<?php echo $maTK;?>">Sửa</a></td>
+                            <td><a href="TTQL.php?id_delete=<?php echo $maTK;?>">Xóa</a></td>
 
                             </tr>
                             <?php } ?>

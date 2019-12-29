@@ -23,7 +23,7 @@ nav{
     background: #D3E4A6;
 }
 .header-right{
-    padding: 10px;
+    text-align: right;
 }
 .header-left{
     padding: 10px;
@@ -44,7 +44,7 @@ nav{
     font-weight: bold;
 }
 .main-left{
-    /* width: 250px; */
+    width: 250px;
     padding: 10px;
     line-height: 1.6;
 }
@@ -65,4 +65,7 @@ table tr td{
     width: 400px;
     margin: 100px auto;
 
+}
+.card-block {
+    margin: 0 auto;
 }

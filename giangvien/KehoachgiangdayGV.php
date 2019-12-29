@@ -2,6 +2,9 @@
 <?php require("../includes/connection.php");?>
 
 <?php
+    session_start();
+?>
+<?php
 	$sql = "SELECT maKHGD, baiHocDK, diaDiemDK ,thoiGianDK
     FROM kehoachgiangday";
   //  where kehoachgianday.maGV = maGV" ;
@@ -25,27 +28,18 @@
 <body>
     <header>
         <div class="wrapper">
+            <?php
+                include("headergv.php");
+            ?>
             
-            <div class="header-left">
-                <a href="#"><img src="../style/images/logo.png" alt="logo"></a>
-            </div>
             
         </div>
     </header>
     <nav>
         <div class="wrapper">
-            <ul class="nav nav-tabs ">
-                <li class="nav-item">
-                    <a class="nav-link" href="KehoachgiangdayGV.php">Kế hoạch giảng dạy</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="LichtrinhgiangdayGV.php">Lịch Trình Giảng Dạy</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="../tintuc.php">Đăng xuất</a>
-                </li>
-                
-            </ul>
+            <?php
+                include("navGV.php");
+            ?>
         </div>
     </nav>
     <main>
