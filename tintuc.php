@@ -25,9 +25,19 @@
         </div>
     </nav>
     <main>
-          <!-- <div class="wrapper">
+          <div class="wrapper">
+                <div style="width: 800px; margin: 30px auto; line-height: 3;">
+                    
+                    <ul>
+                        <li><a href="#">Triển khai kế hoạch học kỳ hè năm học 2018-2019</a></li>
+                        <li><a href="#">Danh sách các môn điều chỉnh lịch thi GD2, HK2, 2018_2019 (13/06/2019)</a></li>
+                        <li><a href="#">Thông báo thi chuẩn Tiếng Anh đâu ra cho trình độ đại học hệ chính quy đợt 3 năm 2019 tại Hà Nội (30/08/2019)</a></li>
+                        <li><a href="#">Thông báo kết quả thi chuẩn Tiếng Anh đầu ra đợt 1 năm 2019 (22/02/2019)</a></li>
+                    </ul>
 
-          </div>   -->
+                </div>
+            
+          </div>  
     </main>
     <footer>
         <div class="wrapper">
