@@ -74,7 +74,7 @@
                     
                     <div class="form-group">
                         <label>Họ tên</label>
-                        <input type="text" class="form-control" id="Hoten" name="Hoten"  value="<?php echo $data['hoTenGV']; ?>">
+                        <input type="text" class="form-control" id="Hoten" name="Hoten"  value="<?php echo $data['hoTenQL']; ?>">
                     </div>
                     <div class="form-group">
                         <label>Ngày sinh </label>
