@@ -1,5 +1,29 @@
 <?php require("../includes/connection.php");?>
+<?php
+    if (isset($_POST["btn_submit"])){
+        $manganh = $_POST["manganh"];
+        $tennganh = $_POST["tennganh"];
 
+        $sql = "INSERT INTO nganh(maNganh, tenNganh ) VALUES ( '$manganhc', '$tennganh')";
+        // mysqli_query($conn,$sql);
+
+        if(mysqli_query($conn,$sql)){
+            echo '<script language="javascript">';
+            echo 'alert("THÊM NGÀNH THÀNH CÔNG")';
+            echo '</script>';
+        }else{
+            echo '<script language="javascript">';
+            echo 'alert("THÊM NGÀNH KHÔNG THÀNH CÔNG")';
+            echo '</script>';
+        }
+            
+
+
+
+
+
+    }
+?>
 
 
 
@@ -36,7 +60,7 @@
         <div class="main" style="width: 400px">
                 <h4 style="text-align: center" >Thêm ngành học</h4>
                 
-                <form action="themtaikhoan.php" method="post" >
+                <form action="taonganhhoc.php" method="post" >
                     <div class="form-group">
                         <label>Mã ngành</label>
                         <input type="text" class="form-control" id="manganh" name="manganh" >

@@ -84,7 +84,7 @@
                             <td><?php echo $data['ngaySinh']; ?></td>
                             <td><?php echo $data['diaChi']; ?></td>
                             <td><a href="suaTTGV.php?id=<?php echo $maTK;?>">Sửa</a></td>
-                            <td><a href="TTQL.php?id_delete=<?php echo $maTK;?>">Xóa</a></td>
+                            <td><a href="TTGV.php?id_delete=<?php echo $maTK;?>">Xóa</a></td>
 
                             </tr>
                             <?php } ?>

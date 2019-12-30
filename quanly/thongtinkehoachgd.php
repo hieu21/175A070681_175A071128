@@ -1,8 +1,7 @@
 <?php require("../includes/connection.php");?>
-
 <?php
 	$sql = "SELECT * 
-    FROM mon";
+    FROM kehoachgiangday";
     
 
 	$query = mysqli_query($conn,$sql);
@@ -13,7 +12,7 @@
 
 <?php
 	if (isset($_GET["id_delete"])) {
-        $sql = 'DELETE FROM mon WHERE maMon ="' .$_GET["id_delete"].'"';
+        $sql = 'DELETE FROM kehoachgiangday WHERE maKHGD ="' .$_GET["id_delete"].'"';
 		mysqli_query($conn,$sql);
 		// $sql = 'DELETE FROM taikhoan WHERE maTK ="' .$_GET["id_delete"].'"';
 		// mysqli_query($conn,$sql);
@@ -25,13 +24,14 @@
 
 
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Thông tin môn học</title>
+    <title>Thông tin kế hoạch giảng dạy</title>
     <link rel="stylesheet" href="../style/css/bootstrap.min.css">
     <link rel="stylesheet" href="../style/css/style.css">
 </head>
@@ -58,9 +58,12 @@
                 <table class="table">
                     <thead class="thead-light">
                         <tr>
-                        <th scope="col">Mã môn học</th>
-                        <th scope="col">Tên môn học</th>                       
-                        <th scope="col">Mã ngành</th>
+                        <th scope="col">Mã kế hoạch giảng dạy</th>                       
+                        <th scope="col">Bài học dự kiến</th>
+                        <th scope="col">Địa điểm dự kiến</th>                       
+                        <th scope="col">Thời gian dự kiến</th>
+                        <th scope="col">Mã giảng viên</th>                       
+                        
                         <th scope="col">Xóa</th>
                         </tr>
                     </thead>
@@ -68,18 +71,21 @@
                             <?php 
                                 while ( $data = mysqli_fetch_array($query)) {
                                 
-                                    $maMon = $data['maMon'];
+                                    $maKHGD = $data['maKHGD'];
                             ?>
                             <tr>
-                            <td scope="row"><?php echo $data['maMon']; ?></td>
-                            <td scope="row"><?php echo $data['tenMon']; ?></td>
-                            <td scope="row"><?php echo $data['maNganh']; ?></td>
-                            <td><a href="thongtinmonhoc.php?id_delete=<?php echo $maMon;?>">Xóa</a></td>
+                            <td scope="row"><?php echo $data['maKHGD']; ?></td>
+                            <td scope="row"><?php echo $data['baiHocDK']; ?></td>
+                            <td scope="row"><?php echo $data['diaDiemDK']; ?></td>
+                            <td scope="row"><?php echo $data['thoiGianDK']; ?></td>
+                            <td scope="row"><?php echo $data['maGV']; ?></td>
+                            
+                            
+                            <td><a href="thongtinlophocphan.php?id_delete=<?php echo $maKHGD;?>">Xóa</a></td>
 
                             </tr>
                             <?php } ?>
                         </tbody>    
-                        
 			    </table>             
          </div>
             

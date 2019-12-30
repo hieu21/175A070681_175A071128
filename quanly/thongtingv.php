@@ -1,9 +1,9 @@
 <?php require("../includes/connection.php");?>
 
 <?php
-	$sql = "SELECT taikhoan.maTK, taikhoan.tenTK, taikhoan.matKhau, quanly.hoTenQL, quanly.maQL, quanly.ngaySinh, quanly.diaChi
-    FROM taikhoan ,quanly
-    where taikhoan.maTK = quanly.maTK" ;
+	$sql = "SELECT taikhoan.maTK, taikhoan.tenTK, taikhoan.matKhau, giangvien.hoTenGV, giangvien.maGV, giangvien.ngaySinh, giangvien.diaChi 
+    FROM taikhoan ,giangvien
+    where taikhoan.maTK = giangvien.maTK" ;
 
 	$query = mysqli_query($conn,$sql);
     
@@ -13,7 +13,7 @@
 
 <?php
 	if (isset($_GET["id_delete"])) {
-        $sql = 'DELETE FROM quanly WHERE maTK ="' .$_GET["id_delete"].'"';
+        $sql = 'DELETE FROM giangvien WHERE maTK ="' .$_GET["id_delete"].'"';
 		mysqli_query($conn,$sql);
 		$sql = 'DELETE FROM taikhoan WHERE maTK ="' .$_GET["id_delete"].'"';
 		mysqli_query($conn,$sql);
@@ -23,46 +23,50 @@
 	
 ?>
 
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Đăng kí quản lý</title>
+    <title>Đăng kí giảng viên</title>
     <link rel="stylesheet" href="../style/css/bootstrap.min.css">
     <link rel="stylesheet" href="../style/css/style.css">
 </head>
 <body>
     <header>
         <div class="wrapper">
+            
             <?php
-                include("headerqt.php");
+                include("headerql.php");
             ?>
+            
         </div>
     </header>
     <nav>
         <div class="wrapper">
             <?php
-                include("navqt.php");
+                include("navql.php");
             ?>
         </div>
     </nav>
     <main>
-            <div class="wrapper">               
-                <div class="main-right">
-                    <h5>Danh sách quản lý</h5>
-                    <div>
+        <div class="wrapper">
+            
+            <div class="main-right">
+                <h5>Danh sách giảng viên</h5>
+                <div>
                     <table class="table">
                         <thead class="thead-light">
                             <tr>
                             <th scope="col">Mã TK</th>
-                            <th scope="col">Tên quản lý</th>
+                            <th scope="col">Tên giảng viên</th>
                             <th scope="col">Tài khoản</th>
                             <th scope="col">Ngày sinh</th>
                             <th scope="col">Địa chỉ</th>
-                            <th scope="col">Sửa</th>
-                            <th scope="col">Xóa</th>
+                            
                             </tr>
                         </thead>
                         <tbody>
@@ -73,27 +77,25 @@
                             ?>
                             <tr>
                             <td scope="row"><?php echo $data['maTK']; ?></td>
-                            <td><?php echo $data['hoTenQL']; ?></td>
+                            <td><?php echo $data['hoTenGV']; ?></td>
                             <td><?php echo $data['tenTK']; ?></td>
                             
                             <td><?php echo $data['ngaySinh']; ?></td>
                             <td><?php echo $data['diaChi']; ?></td>
                             
-                            <td><a href="suaTTQL.php?id=<?php echo $maTK;?>">Sửa</a></td>
-                            <td><a href="TTQL.php?id_delete=<?php echo $maTK;?>">Xóa</a></td>
 
                             </tr>
                             <?php } ?>
                         </tbody>
 			        </table>
-                    </div>                   
-                </div>
+                    </div>
             </div>
+        </div>   
     </main>
     <footer>
         <div class="wrapper">
             <?php
-                include("footerqt.php");
+                include("footerql.php");
             ?>
         </div>
     </footer>

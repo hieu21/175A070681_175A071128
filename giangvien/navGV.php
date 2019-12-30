@@ -12,7 +12,7 @@
                     <div class="dropdown-menu">
                     <a class="dropdown-item" href="#"><?php echo $_SESSION['tenTK']; ?></a>
                     <a class="dropdown-item" href="doimatkhaugv.php">Đổi mật khẩu</a>
-                    <a class="dropdown-item" href="../tintuc.php">Đăng xuất</a>
+                    <a class="dropdown-item" href="../dangxuat.php">Đăng xuất</a>
                     </div>
                 </li>
                             

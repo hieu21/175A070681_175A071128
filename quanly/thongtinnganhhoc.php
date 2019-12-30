@@ -1,5 +1,26 @@
 <?php require("../includes/connection.php");?>
+<?php
+	$sql = "SELECT * 
+    FROM nganh";
+    
 
+	$query = mysqli_query($conn,$sql);
+    
+	
+	
+?>
+
+<?php
+	if (isset($_GET["id_delete"])) {
+        $sql = 'DELETE FROM nganh WHERE maNganh ="' .$_GET["id_delete"].'"';
+		mysqli_query($conn,$sql);
+		// $sql = 'DELETE FROM taikhoan WHERE maTK ="' .$_GET["id_delete"].'"';
+		// mysqli_query($conn,$sql);
+		
+		
+	}
+	
+?>
 
 
 
@@ -39,10 +60,25 @@
                         <tr>
                         <th scope="col">Mã ngành</th>
                         <th scope="col">Tên ngành</th>                       
-                        <th scope="col">Sửa</th>
+                        
                         <th scope="col">Xóa</th>
                         </tr>
                     </thead>
+                    <tbody>
+                            <?php 
+                                while ( $data = mysqli_fetch_array($query)) {
+                                
+                                    $maNganh = $data['maNganh'];
+                            ?>
+                            <tr>
+                            <td scope="row"><?php echo $data['maNganh']; ?></td>
+                            <td scope="row"><?php echo $data['tenNganh']; ?></td>
+                            
+                            <td><a href="thongtinnganhhoc.php?id_delete=<?php echo $maNganh;?>">Xóa</a></td>
+
+                            </tr>
+                            <?php } ?>
+                        </tbody>    
                         
 			    </table>             
          </div>

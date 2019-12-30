@@ -1,5 +1,29 @@
 <?php require("../includes/connection.php");?>
+<?php
+    if (isset($_POST["btn_submit"])){
+        $malophocphan = $_POST["malophocphan"];
+        $mathoigianhoc = $_POST["mathoigianhoc"];
 
+        $sql = "INSERT INTO lop_hocphan(maLHP, maTGH ) VALUES ( '$malophocphan', '$mathoigianhoc')";
+        // mysqli_query($conn,$sql);
+
+        if(mysqli_query($conn,$sql)){
+            echo '<script language="javascript">';
+            echo 'alert("THÊM LỚP THÀNH CÔNG")';
+            echo '</script>';
+        }else{
+            echo '<script language="javascript">';
+            echo 'alert("THÊM LỚP KHÔNG THÀNH CÔNG")';
+            echo '</script>';
+        }
+            
+
+
+
+
+
+    }
+?>
 
 
 
@@ -36,10 +60,14 @@
         <div class="main" style="width: 400px">
                 <h4 style="text-align: center" >Thêm lớp học phần</h4>
                 
-                <form action="themtaikhoan.php" method="post" >
+                <form action="taolophocphan.php" method="post" >
                     <div class="form-group">
                         <label>Mã lớp học phần</label>
-                        <input type="text" class="form-control" id="malophocphan" name="mamalophocphan" >
+                        <input type="text" class="form-control" id="malophocphan" name="malophocphan" >
+                    </div>
+                    <div class="form-group">
+                        <label>Mã thời gian học</label>
+                        <input type="text" class="form-control" id="mathoigianhoc" name="mathoigianhoc" >
                     </div>
                     
                     

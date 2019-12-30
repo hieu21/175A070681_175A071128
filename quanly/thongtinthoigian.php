@@ -1,6 +1,27 @@
 <?php require("../includes/connection.php");?>
 
+<?php
+	$sql = "SELECT * 
+    FROM thoigianhoc";
+    
 
+	$query = mysqli_query($conn,$sql);
+    
+	
+	
+?>
+
+<?php
+	if (isset($_GET["id_delete"])) {
+        $sql = 'DELETE FROM thoigianhoc WHERE maTGH ="' .$_GET["id_delete"].'"';
+		mysqli_query($conn,$sql);
+		// $sql = 'DELETE FROM taikhoan WHERE maTK ="' .$_GET["id_delete"].'"';
+		// mysqli_query($conn,$sql);
+		
+		
+	}
+	
+?>
 
 
 
@@ -41,10 +62,27 @@
                         <th scope="col">Năm học</th>
                         <th scope="col">Học kỳ</th> 
                         <th scope="col">Giai Đoạn</th>                        
-                        <th scope="col">Sửa</th>
+                        
                         <th scope="col">Xóa</th>
                         </tr>
                     </thead>
+                    <tbody>
+                            <?php 
+                                while ( $data = mysqli_fetch_array($query)) {
+                                
+                                    $maTGH = $data['maTGH'];
+                            ?>
+                            <tr>
+                            <td scope="row"><?php echo $data['maTGH']; ?></td>
+                            <td scope="row"><?php echo $data['namHoc']; ?></td>
+                            <td scope="row"><?php echo $data['hocKy']; ?></td>
+                            <td scope="row"><?php echo $data['giaiDoan']; ?></td>
+                            
+                            <td><a href="thongtinthoigian.php?id_delete=<?php echo $maTGH;?>">Xóa</a></td>
+
+                            </tr>
+                            <?php } ?>
+                        </tbody>    
                         
 			    </table>             
          </div>

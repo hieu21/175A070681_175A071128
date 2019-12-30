@@ -5,9 +5,11 @@
     session_start();
 ?>
 <?php
-	$sql = "SELECT maKHGD, baiHocDK, diaDiemDK ,thoiGianDK
-    FROM kehoachgiangday";
-  //  where kehoachgianday.maGV = maGV" ;
+    
+    $maGV = $_SESSION['maTK'];
+	$sql = 'SELECT maKHGD, baiHocDK, diaDiemDK ,thoiGianDK
+    FROM kehoachgiangday
+    where maGV = "'.$maGV.'"' ;
 
 	$query = mysqli_query($conn,$sql);
     
@@ -62,13 +64,13 @@
                             <?php 
                                 while ( $data = mysqli_fetch_array($query)) {
                                 
-                                    $ID = $data['maTK'];
+                                    $maKHGD = $data['maKHGD'];
                             ?>
                             <tr>
                             <td scope="row"><?php echo $data['maKHGD']; ?></td>
                             <td><?php echo $data['baiHocDK']; ?></td>
                             <td><?php echo $data['diaDiemDK']; ?></td>                          
-                            <td><?php echo md5($data['thoiGianDK']); ?></td>
+                            <td><?php echo $data['thoiGianDK']; ?></td>
       
                             </tr>
                             <?php } ?>

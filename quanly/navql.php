@@ -1,6 +1,4 @@
-<?php
-    session_start();
-?>
+
 <ul class="nav nav-tabs">
     
     <li class="nav-item dropdown">
@@ -39,13 +37,23 @@
         </div>
     </li>
     <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Thông tin giảng dạy</a>
+        <div class="dropdown-menu">
+        <a class="dropdown-item" href="taokehoachgd.php">Tạo kế hoạch giảng dạy</a>
+        <a class="dropdown-item" href="taolichtrinhth.php">Tạo lịch trình giảng dạy</a>
+        <a class="dropdown-item" href="thongtingv.php">Thông tin giảng viên</a>
+        <a class="dropdown-item" href="thongtinkehoachgd.php">Thông tin kế hoạch giảng dạy</a>
+        <a class="dropdown-item" href="thongtinlichtrinhth.php">Thông tin lịch trình giảng dạy</a>
+        </div>
+    </li>
+    <!-- <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Tài khoản</a>
         <div class="dropdown-menu">
-        <a class="dropdown-item" href="#"><?php echo $_SESSION['tenTK']; ?></a>
+        <a class="dropdown-item" href="#"></a>
         <a class="dropdown-item" href="doimatkhauql.php">Đổi mật khẩu</a>
         <a class="dropdown-item" href="../dangxuat.php">Đăng xuất</a>
         </div>
-    </li>
+    </li> -->
     
   
   

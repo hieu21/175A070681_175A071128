@@ -5,9 +5,10 @@
     session_start();
 ?>
 <?php
-	$sql = "SELECT maKHGD, baiHocDK, diaDiemDK ,thoiGianDK
-    FROM kehoachgiangday";
-  //  where kehoachgianday.maGV = maGV" ;
+    $maGV = $_SESSION['maTK'];
+	$sql = "SELECT maLTTH, baiHocTH, diaDiemTH ,thoiGianTH
+    FROM lichtrinhthuchien
+    where maGV = '$maGV'" ;
 
 	$query = mysqli_query($conn,$sql);
     
@@ -53,9 +54,9 @@
                         <thead class="thead-light">
                             <tr>
                             <th scope="col">Mã giảng dạy</th>
-                            <th scope="col">Bài học dự kiến</th>
-                            <th scope="col">Địa điểm dự kiến</th>
-                            <th scope="col">Thời gian dự kiến</th>
+                            <th scope="col">Bài học thực hiện</th>
+                            <th scope="col">Địa điểm thực hiện</th>
+                            <th scope="col">Thời gian thực hiện</th>
                             
                             
                             </tr>
@@ -64,13 +65,13 @@
                             <?php 
                                 while ( $data = mysqli_fetch_array($query)) {
                                 
-                                    $ID = $data['maTK'];
+                                    $maLTTH = $data['maLTTH'];
                             ?>
                             <tr>
-                            <td scope="row"><?php echo $data['maKHGD']; ?></td>
-                            <td><?php echo $data['baiHocDK']; ?></td>
-                            <td><?php echo $data['diaDiemDK']; ?></td>                          
-                            <td><?php echo md5($data['thoiGianDK']); ?></td>
+                            <td scope="row"><?php echo $data['maLTTH']; ?></td>
+                            <td><?php echo $data['baiHocTH']; ?></td>
+                            <td><?php echo $data['diaDiemTH']; ?></td>                          
+                            <td><?php echo $data['thoiGianTH']; ?></td>
       
                             </tr>
                             <?php } ?>

@@ -1,5 +1,26 @@
 <?php require("../includes/connection.php");?>
+<?php
+	$sql = "SELECT * 
+    FROM lop_hocphan";
+    
 
+	$query = mysqli_query($conn,$sql);
+    
+	
+	
+?>
+
+<?php
+	if (isset($_GET["id_delete"])) {
+        $sql = 'DELETE FROM lop_hocphan WHERE maLHP ="' .$_GET["id_delete"].'"';
+		mysqli_query($conn,$sql);
+		// $sql = 'DELETE FROM taikhoan WHERE maTK ="' .$_GET["id_delete"].'"';
+		// mysqli_query($conn,$sql);
+		
+		
+	}
+	
+?>
 
 
 
@@ -38,11 +59,25 @@
                     <thead class="thead-light">
                         <tr>
                         <th scope="col">Mã Lớp học phần</th>                       
-                        <th scope="col">Sửa</th>
+                        <th scope="col">Mã Thời gian học</th>
                         <th scope="col">Xóa</th>
                         </tr>
                     </thead>
-                        
+                    <tbody>
+                            <?php 
+                                while ( $data = mysqli_fetch_array($query)) {
+                                
+                                    $maLHP = $data['maLHP'];
+                            ?>
+                            <tr>
+                            <td scope="row"><?php echo $data['maLHP']; ?></td>
+                            <td scope="row"><?php echo $data['maTGH']; ?></td>
+                            
+                            <td><a href="thongtinlophocphan.php?id_delete=<?php echo $maLHP;?>">Xóa</a></td>
+
+                            </tr>
+                            <?php } ?>
+                        </tbody>    
 			    </table>             
          </div>
             

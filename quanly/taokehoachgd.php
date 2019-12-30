@@ -1,19 +1,23 @@
 <?php require("../includes/connection.php");?>
 <?php
     if (isset($_POST["btn_submit"])){
-        $malopmonhoc = $_POST["malopmonhoc"];
-        $mamon = $_POST["mamon"];
+        $makhgd = $_POST["makhgd"];
+        $baihocdk = $_POST["baihocdk"];
+        $diadiemdk = $_POST["diadiemdk"];
+        $thoigiandk = $_POST["thoigiandk"];
+        $magv = $_POST["magv"];
+        
 
-        $sql = "INSERT INTO lop_monhoc(maLMH, maMon ) VALUES ( '$malopmonhoc', '$mamon')";
+        $sql = "INSERT INTO kehoachgiangday(maKHGD, baiHocDK, diaDiemDK, thoiGianDK, maGV ) VALUES ( '$makhgd', '$baihocdk' , '$diadiemdk' , '$thoigiandk' , '$magv')";
         // mysqli_query($conn,$sql);
 
         if(mysqli_query($conn,$sql)){
             echo '<script language="javascript">';
-            echo 'alert("THÊM LỚP THÀNH CÔNG")';
+            echo 'alert("THÊM THÀNH CÔNG")';
             echo '</script>';
         }else{
             echo '<script language="javascript">';
-            echo 'alert("THÊM LỚP KHÔNG THÀNH CÔNG")';
+            echo 'alert("THÊM KHÔNG THÀNH CÔNG")';
             echo '</script>';
         }
             
@@ -34,7 +38,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Tạo lớp môn học</title>
+    <title>Tạo kế hoạch giảng dạy</title>
     <link rel="stylesheet" href="../style/css/bootstrap.min.css">
     <link rel="stylesheet" href="../style/css/style.css">
 </head>
@@ -58,17 +62,30 @@
     <main>
         <div class="wrapper">
         <div class="main" style="width: 400px">
-                <h4 style="text-align: center" >Thêm lớp môn học</h4>
+                <h4 style="text-align: center" >Thêm kế hoạch giảng dạy</h4>
                 
-                <form action="taolopmonhoc.php" method="post" >
+                <form action="taokehoachgd.php" method="post" >
                     <div class="form-group">
-                        <label>Mã lớp môn học</label>
-                        <input type="text" class="form-control" id="malopmonhoc" name="malopmonhoc" >
+                        <label>Mã kế hoạch giảng dạy</label>
+                        <input type="text" class="form-control" id="makhgd" name="makhgd" >
                     </div>
                     <div class="form-group">
-                        <label>Mã môn</label>
-                        <input type="text" class="form-control" id="mamon" name="mamon" >
+                        <label>Bài học dự kiến</label>
+                        <input type="text" class="form-control" id="baihocdk" name="baihocdk" >
                     </div>
+                    <div class="form-group">
+                        <label>Địa điểm dự kiến</label>
+                        <input type="text" class="form-control" id="diadiemdk" name="diadiemdk" >
+                    </div>
+                    <div class="form-group">
+                        <label>Thời gian dự kiến</label>
+                        <input type="date" class="form-control" id="thoigiandk" name="thoigiandk" >
+                    </div>
+                    <div class="form-group">
+                        <label>Mã giảng viên</label>
+                        <input type="text" class="form-control" id="magv" name="magv" >
+                    </div>
+                    
                     
                     
                     
