@@ -1,5 +1,5 @@
 <?php require("../includes/connection.php");?>
-<<?php
+<?php
     if (isset($_POST["btn_submit"])){
         $maltth = $_POST["maltth"];
         $baihocth = $_POST["baihocth"];

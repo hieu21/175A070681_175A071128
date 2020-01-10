@@ -7,9 +7,9 @@
 <?php
     
     $maGV = $_SESSION['maTK'];
-	$sql = 'SELECT maKHGD, baiHocDK, diaDiemDK ,thoiGianDK
-    FROM kehoachgiangday
-    where maGV = "'.$maGV.'"' ;
+	$sql = 'SELECT *
+    FROM kehoachgiangday, giangvien_mon, mon, lop_monhoc, lmh_lhp, lop_hocphan, thoigianhoc
+    where kehoachgiangday.maGV = giangvien_mon.maGV AND giangvien_mon.maMon = mon.maMon AND mon.maMon = lop_monhoc.maMon AND lop_monhoc.maLMH = lmh_lhp.maLMH AND lop_hocphan.maLHP = lmh_lhp.maLHP AND lop_hocphan.maTGH = thoigianhoc.maTGH AND kehoachgiangday.maGV = "'.$maGV.'"'  ;
 
 	$query = mysqli_query($conn,$sql);
     
@@ -56,6 +56,12 @@
                             <th scope="col">Bài học dự kiến</th>
                             <th scope="col">Địa điểm dự kiến</th>
                             <th scope="col">Thời gian dự kiến</th>
+                            <th scope="col">Lớp môn học</th>
+                            <th scope="col">Lớp học phần</th>
+                            <th scope="col">Giai đoạn</th>
+                            <th scope="col">Học kỳ</th>
+                            <th scope="col">Năm học</th>
+                            
                             
                             
                             </tr>
@@ -71,6 +77,11 @@
                             <td><?php echo $data['baiHocDK']; ?></td>
                             <td><?php echo $data['diaDiemDK']; ?></td>                          
                             <td><?php echo $data['thoiGianDK']; ?></td>
+                            <td><?php echo $data['maLMH']; ?></td>
+                            <td><?php echo $data['maLHP']; ?></td>
+                            <td><?php echo $data['giaiDoan']; ?></td>
+                            <td><?php echo $data['hocKy']; ?></td>
+                            <td><?php echo $data['namHoc']; ?></td>
       
                             </tr>
                             <?php } ?>

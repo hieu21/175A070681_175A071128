@@ -4,6 +4,9 @@
                     <a class="nav-link" href="themtaikhoan.php">Thêm tài khoản</a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" href="themnhieutaikhoan.php">Thêm nhiều tài khoản</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="TTQL.php">Thông tin tài khoản QL</a>
                 </li>
                 <li class="nav-item">

@@ -7,14 +7,10 @@ ini_set('display_errors', 0);
 <?php
     if (isset($_POST["btn_submit"])){
         $nhapthongtin = $_POST["nhapthongtin"];
-        $sql = "SELECT * FROM kehoachgiangday WHERE maGV =(SELECT maGV FROM giangvien WHERE hoTenGV like '$nhapthongtin')";
+        $sql = "SELECT * FROM kehoachgiangday, giangvien, mon, giangvien_mon, lop_monhoc, lop_hocphan, lmh_lhp, thoigianhoc WHERE kehoachgiangday.maGV = giangvien.maGV AND giangvien_mon.maGV = giangvien.maGV AND giangvien_mon.maMon = mon.maMon AND giangvien.hoTenGV = '$nhapthongtin' AND lop_monhoc.maMon = mon.maMon AND lmh_lhp.maLMH = lop_monhoc.maLMH AND lmh_lhp.maLHP = lop_hocphan.maLHP AND lop_hocphan.maTGH = thoigianhoc.maTGH ";
         $query = mysqli_query($conn,$sql);        
         
-        $sql1 = "SELECT * FROM giangvien WHERE hoTenGV = '$nhapthongtin'";
-        $query1 = mysqli_query($conn,$sql1);
-
-        $sql2 = "SELECT *FROM mon WHERE maMon= (SELECT maMon FROM giangvien_mon WHERE maGV =(SELECT maGV FROM giangvien WHERE hoTenGV = '$nhapthongtin'))";
-        $query2 = mysqli_query($conn,$sql2);
+        
     }
 	
 ?>
@@ -58,7 +54,7 @@ ini_set('display_errors', 0);
                 <input type="submit" class="btn btn-primary" value="Xem" name="btn_submit" >
             </form>
             </div>
-                <div>
+                <div style="padding-bottom: 15px;">
                 <table class="table">
                         <thead class="thead-light">
                             <tr>
@@ -68,34 +64,31 @@ ini_set('display_errors', 0);
                             <th scope="col">Địa điểm</th>
                             <th scope="col">Thòi gian </th>
                             <th scope="col">Môn</th>
+                            <th scope="col">Lớp môn học</th>
+                            <th scope="col">Lớp học phần </th>
+                            <th scope="col">Giai đoạn</th>
+                            <th scope="col">Học kỳ</th>
+                            <th scope="col">Năm học</th>
                             
                             </tr>
                         </thead>
                         <tbody>
                         <?php 
-                                while ( $data1 = mysqli_fetch_array($query1)) {
-                                
-                                    // $maLHP = $data['ma'];
-                            ?>
-                            <tr>
-                            <td scope="row"><?php echo $data1['hoTenGV']; ?></td>
-                            
-                            <?php } ?>
-                            <?php 
                                 while ( $data = mysqli_fetch_array($query)) {
                                 
                                     // $maLHP = $data['ma'];
                             ?>
+                            <tr>
+                            <td scope="row"><?php echo $data['hoTenGV']; ?></td>
                             <td scope="row"><?php echo $data['baiHocDK']; ?></td>
                             <td scope="row"><?php echo $data['diaDiemDK']; ?></td>
-                            <td scope="row"><?php echo $data['thoiGianDK']; ?></td>
-                            <?php } ?>
-                            <?php 
-                                while ( $data2 = mysqli_fetch_array($query2)) {
-                                
-                                    // $maLHP = $data['ma'];
-                            ?>
-                            <td scope="row"><?php echo $data2['tenMon']; ?></td>
+                            <td scope="row"><?php echo $data['thoiGianDK']; ?></td>                            
+                            <td scope="row"><?php echo $data['tenMon']; ?></td>
+                            <td scope="row"><?php echo $data['maLMH']; ?></td>                            
+                            <td scope="row"><?php echo $data['maLHP']; ?></td>
+                            <td scope="row"><?php echo $data['giaiDoan']; ?></td>
+                            <td scope="row"><?php echo $data['hocKy']; ?></td>
+                            <td scope="row"><?php echo $data['namHoc']; ?></td>
                             </tr>
                             <?php } ?>
                         </tbody>
